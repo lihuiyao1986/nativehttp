@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-nativehttp" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>NativeHttp</name>
+    <js-module name="NativeHttp" src="www/NativeHttp.js">
+        <clobbers target="cordova.plugins.nativehttp" />
+    </js-module>
+     <!-- android -->
+  	<platform name="android">
+    	<config-file target="res/xml/config.xml" parent="/*">
+      		<feature name="NativeHttp">
+        		<param name="android-package" value="com.huasco.plugins.NativeHttp"/>
+      		</feature>
+   		 </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        </config-file>
+    	<source-file src="src/android/NativeHttp.java" target-dir="src/com/huasco/plugins"/>
+    	<source-file src="src/android/HttpUtils.java" target-dir="src/com/huasco/http"/>
+        <framework src="com.huangdali:myhttputils:2.1.5" />
+        <framework src="com.alibaba:fastjson:1.2.36" />
+  	</platform>
+</plugin>
